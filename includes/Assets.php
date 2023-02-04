@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginSpace;
+namespace NbpExr;
 
 /**
  * Scripts and styles helper.
@@ -76,8 +76,8 @@ class Assets
      */
     public function get_scripts()
     {
-        $assets_url = \PluginSpace\Main::$BASEURL.'/public';
-        $plugin_dir = \PluginSpace\Main::$PLUGINDIR.'/public';
+        $assets_url = \NbpExr\Main::$BASEURL.'/public';
+        $plugin_dir = \NbpExr\Main::$PLUGINDIR.'/public';
         $prefix = ''; // defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.min' : '';
 
         $scripts = [
@@ -125,12 +125,9 @@ class Assets
      */
     public function get_styles()
     {
-        $assets_url = \PluginSpace\Main::$BASEURL.'/public';
+        $assets_url = \NbpExr\Main::$BASEURL.'/public';
 
         $styles = [
-            $this->prefix.'-bootstrap' => [
-                'src' => 'https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css',
-            ],
             $this->prefix.'-frontend'  => [
                 'src' => $assets_url.$this->mix('/css/frontend.css'),
             ],
@@ -157,7 +154,7 @@ class Assets
         static $manifests = [];
 
         if (empty($manifestDirectory)) {
-            $manifestDirectory = \PluginSpace\Main::$PLUGINDIR.'/public';
+            $manifestDirectory = \NbpExr\Main::$PLUGINDIR.'/public';
         }
 
         $manifestPath = $manifestDirectory.'/mix-manifest.json';

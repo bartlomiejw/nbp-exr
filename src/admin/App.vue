@@ -10,7 +10,7 @@ import menuFix from './admin-menu-fix'
 
 export default defineComponent({
   mounted() {
-    const that = this
+    // const that = this
 
     const pluginConfig: any = inject('pluginConfig', {})
     // @ts-ignore

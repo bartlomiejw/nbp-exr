@@ -3,6 +3,10 @@ const path = require('path')
 const mix = require('laravel-mix')
 const webpack = require('webpack')
 const StylelintPlugin = require('stylelint-webpack-plugin')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const ElementPlus = require('unplugin-element-plus/webpack')
 
 require('laravel-mix-tailwind')
 
@@ -21,6 +25,22 @@ const webpackConfig = {
       context: './assets',
       files: '**/*.css',
       fix: true,
+    }),
+    AutoImport({
+      imports: [
+        // presets
+        'vue',
+        'vue-router',
+        'pinia',
+        { 'element-plus/es': ['ElMessage'] },
+      ],
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    ElementPlus({
+      useSource: true,
     }),
   ],
   resolve: {
@@ -87,17 +107,29 @@ mix.options({
     postCss: postcssPlugins
   })
   .postCss(
-    'assets/admin.css',
+    'src/assets/admin.css',
     'css'
   )
   .postCss(
-    'assets/frontend.css',
+    'src/assets/frontend.css',
     'css'
   )
   .postCss(
-    'assets/frontview.css',
+    'src/assets/frontview.css',
     'css'
   )
+
+// mix.sass('src/assets/admin.scss', 'css', {
+//   outputStyle: 'nested'
+// });
+//
+// mix.sass('src/assets/frontend.scss', 'css', {
+//   outputStyle: 'nested'
+// });
+//
+// mix.sass('src/assets/frontview.scss', 'css', {
+//   outputStyle: 'nested'
+// });
 
 mix.tailwind().version()
 
@@ -110,9 +142,9 @@ mix.after(() => {
     fs.readFileSync('./public/mix-manifest.json').toString()
   )
 
-  let adminHtml    = fs.readFileSync('./assets/admin.html').toString()
-  let frontendHtml = fs.readFileSync('./assets/frontend.html').toString()
-  let frontviewHtml = fs.readFileSync('./assets/frontview.html').toString()
+  let adminHtml    = fs.readFileSync('./src/assets/admin.html').toString()
+  let frontendHtml = fs.readFileSync('./src/assets/frontend.html').toString()
+  let frontviewHtml = fs.readFileSync('./src/assets/frontview.html').toString()
   for (let path of Object.keys(manifest)) {
     adminHtml    = adminHtml.replace(path.replace(/^\//, ''), manifest[path].replace(/^\//, ''))
     frontendHtml = frontendHtml.replace(path.replace(/^\//, ''), manifest[path].replace(/^\//, ''))

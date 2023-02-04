@@ -9,7 +9,7 @@
     "paths": {
       "~src/*": ["src/*"]
     },
-    "types": ["@types/jest"],
+    "types": ["@types/jest", "element-plus/global"],
     /* Additional Options */
     "strict": true,
     "skipLibCheck": true,

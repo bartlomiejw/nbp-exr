@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginSpace;
+namespace NbpExr;
 
 /**
  * Implements example command.

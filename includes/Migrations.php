@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginSpace;
+namespace NbpExr;
 
 /**
  * Migrations class.
@@ -89,7 +89,7 @@ final class Migrations
         global $wpdb;
 
         // remove tables
-        // $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}PluginPrefix_grid");
+        // $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}nbpexr_grid");
 
         // remove options
         delete_option($prefix.'_last_migrated_version');
@@ -118,7 +118,7 @@ final class Migrations
         require_once ABSPATH.'wp-admin/includes/upgrade.php';
 
         /* $sqlQuery = "
-    CREATE TABLE {$wpdb->prefix}PluginPrefix_grid (
+    CREATE TABLE {$wpdb->prefix}nbpexr_grid (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(190) NOT NULL,
     `config` TEXT NOT NULL,

@@ -1,15 +1,15 @@
 // @ts-ignore
-function menuFix(slug) {
+const menuFix = (slug) =>{
   const currentUrl  = window.location.href
   const isLocal     = currentUrl.indexOf('admin.html') > 0
   const menuRoot    = document.querySelector(isLocal ? '.wp-menu-open' : `#toplevel_page_${slug}`)
 
-  var currentPath = currentUrl.substr(currentUrl.indexOf(isLocal ? '#/' : 'admin.php'))
+  const currentPath = currentUrl.substr(currentUrl.indexOf(isLocal ? '#/' : 'admin.php'))
 
   if (menuRoot) {
     menuRoot.addEventListener('click', function (e) {
-      var target  = e.target
-      var myItems = this.querySelectorAll('li')
+      const target  = e.target
+      const myItems = this.querySelectorAll('li')
       for (let i = 0; i < myItems.length; i++) {
         let  node = myItems[i];
         if (node !== e.target.parentElement) {
@@ -21,13 +21,13 @@ function menuFix(slug) {
     })
 
     // remove all current
-    var items = menuRoot.querySelectorAll(`.current`)
+    const items = menuRoot.querySelectorAll(`.current`)
     for (let i = 0; i < items.length; i++) {
       let node = items[i];
       node.classList.remove('current')
     }
 
-    var menu = menuRoot.querySelector(`.wp-submenu a[href="${currentPath}"`)
+    let menu = menuRoot.querySelector(`.wp-submenu a[href="${currentPath}"`)
 
     if (! isLocal && currentPath.endsWith('#/')) {
       menu = menuRoot.querySelector(`.wp-submenu a.wp-first-item`)
@@ -40,4 +40,4 @@ function menuFix(slug) {
   }
 }
 
-export default menuFix;
+export default menuFix

@@ -1,12 +1,4 @@
-<template>
-  <div class="app-dashboard">
-    <section class="w-full text-center">
-      {{ msg }}
-    </section>
-  </div>
-</template>
-
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -21,6 +13,14 @@ export default defineComponent({
 })
 </script>
 
+<template>
+  <div class="app-dashboard">
+    <section class="w-full text-center">
+      {{ msg }}
+    </section>
+  </div>
+</template>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 </style>

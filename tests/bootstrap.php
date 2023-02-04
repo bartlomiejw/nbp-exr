@@ -22,7 +22,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 /*
  * WP_REST_Controller class.
  */
-if (! class_exists('WP_REST_Controller')) {
+if (! class_exists( 'nbp-exr\tests\WP_REST_Controller' )) {
     require_once __DIR__.'/class-wp-rest-controller.php';
 }
 

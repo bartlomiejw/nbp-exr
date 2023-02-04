@@ -18,8 +18,8 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "classmap-authoritative": false,
-    "classloader-suffix": "PluginSpace",
-    "autoloader-suffix": "PluginSpace",
+    "classloader-suffix": "NbpExr",
+    "autoloader-suffix": "NbpExr",
     "process-timeout": 0,
     "vendor-dir": "vendor",
     "platform-check": false,
@@ -30,7 +30,7 @@
   },
   "autoload": {
     "psr-4": {
-      "PluginSpace\\": "includes/"
+      "NbpExr\\": "includes/"
     }
   },
   "autoload-dev": {

@@ -2,14 +2,14 @@
 
 namespace Tests;
 
-defined('ABSPATH') or die();
+use nbpdefined('ABSPATH') or die();
 
 class AdminLoaderTests extends PluginTestCase
 {
     public function test_construct()
     {
-        new \PluginSpace\AdminLoader('test');
+        new \NbpExr\AdminLoader('test');
 
-        $this->assertTrue(has_action('admin_menu', '\PluginSpace\AdminLoader->admin_menu()') > 0);
+        $this->assertTrue(has_action('admin_menu', '\NbpExr\AdminLoader->admin_menu()') > 0);
     }
 }
