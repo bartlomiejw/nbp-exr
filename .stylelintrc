@@ -1,41 +1,24 @@
 {
+  "plugins": ["stylelint-scss"],
   "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-rational-order"
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss",
+    "stylelint-config-standard-vue"
   ],
+  "ignoreFiles": ["src/styles/scss-suger.scss"],
   "rules": {
-    "declaration-colon-newline-after": null,
-    "declaration-block-no-duplicate-properties": true,
-    "value-list-comma-newline-after": null,
-    "no-empty-source": null,
+    "string-quotes": "single",
+    "scss/double-slash-comment-empty-line-before": null,
+    "at-rule-no-unknown": null,
+    "function-name-case": null,
+    "function-no-unknown": null,
+    "declaration-block-trailing-semicolon": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "rule-empty-line-before": null,
+    "scss/at-mixin-argumentless-call-parentheses": null,
+    "selector-class-pattern": null,
     "no-descending-specificity": null,
-    "at-rule-empty-line-before": null,
-    "at-rule-no-unknown": [
-      true,
-      {
-        "ignoreAtRules": [
-          "extend",
-          "at-root",
-          "debug",
-          "warn",
-          "error",
-          "if",
-          "else",
-          "for",
-          "each",
-          "while",
-          "mixin",
-          "include",
-          "content",
-          "return",
-          "tailwind",
-          "apply",
-          "responsive",
-          "variants",
-          "screen",
-          "function"
-        ]
-      }
-    ]
+    "custom-property-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null
   }
 }

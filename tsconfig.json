@@ -1,35 +1,66 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "useDefineForClassFields": true,
+    "types": ["element-plus/global", "@types/jest"],
+    "isolatedModules": true,
+    "lib": ["esnext", "dom"],
     "target": "esnext",
-    "moduleResolution": "node",
+    "module": "commonjs",
+    //	Enable all strict type inspection options.
+    //Open up --strict Equivalent to enable --noImplicitAny, --noImplicitThis, --alwaysStrict， --strictNullChecks and --strictFunctionTypes and--strictPropertyInitialization。
+    "strict": true,
+    // Allow the compiler to compile js, jsx files
+    "allowJs": false,
+    // Allow JS Error in the file，Usually and allow JS一Use
+    "checkJs": false,
+    // Allow JSX
     "jsx": "preserve",
-    "outDir": "./dist",
+    "declaration": true,
+    //Removal annotation
+    "removeComments": true,
+    //Can't ignore ANY
+    "noImplicitAny": false,
+    //Turn off this type annotation prompt
+    "noImplicitThis": true,
+    //null/undefined can not be used as other types of sub -types:
+    //let a: number = null; //There will be an error here.
+    "strictNullChecks": true,
+    //Generate an enumerated mapping code
+    "preserveConstEnums": true,
+    //Root directory
+    //Output directory
+    "outDir": "./public",
+    // Whether to output src2.js.map file
+    "sourceMap": true,
+    //The variable is defined but not used
+    "noUnusedLocals": false,
+    //Whether to allow the JSON file as a module to analyze
+    "resolveJsonModule": true,
+    //and noUnusedLocals一Sample，against func
+    "noUnusedParameters": false,
+    // Module analysis strategy, TS uses Node's analysis strategy by default, that is, the relative way to import
+    "moduleResolution": "node",
+    //Allow export = export, imported from import from
+    "esModuleInterop": true,
+    //Ignore types of type inspection of all statement files ( *.d.ts).
+    "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "~src/*": ["src/*"]
-    },
-    "types": ["@types/jest", "element-plus/global"],
-    /* Additional Options */
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error",
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "allowJs": true
+      "@/*": ["src/*"],
+      "~/*": ["./*"]
+    }
   },
   "include": [
-    "src",
-    "tests/jsunit"
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "/**/*.ts",
+    "/**/*.d.ts",
+    "/**/*.tsx",
+    "auto-imports.d.ts",
+    "components.d.ts"
   ],
-  "exclude": [
-    ".git",
-    "node_modules",
-    "dist",
-    "public",
-    "vendor"
-  ]
+  "exclude": ["node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

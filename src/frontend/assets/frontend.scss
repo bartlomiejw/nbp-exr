@@ -1,0 +1,20 @@
+@charset "utf-8";
+/**
+ * @author wariasbj
+ * @description global element-plus variable definition
+*/
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'primary': (
+      'base': #062c6e
+    )
+  )
+);
+
+// @use "element-plus/theme-chalk/src/index.scss" as *;
+
+$primary: #062c6e;
+$success: #67c23a;
+$warning: #e6a23c;
+$error: #f56c6c;

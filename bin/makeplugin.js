@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 })
 
 const base_path = path.resolve(process.cwd())
-const template_file = 'vue-wp-plugin-starter.php'
+const template_file = 'wp-nbpexr.php'
 
 const options = {
   PluginName: '',    // the name, example: Hello World

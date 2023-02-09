@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
-import menuFix from './admin-menu-fix'
+import menuFix from './admin-menu-fix.js'
 
 export default defineComponent({
   mounted() {
@@ -20,4 +20,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 </style>

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    //Allow export = export, imported from import from
+    "esModuleInterop": true
+  },
+  "include": ["vite.config.ts"]
+}

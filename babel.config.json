@@ -1,0 +1,11 @@
+// babel.config.js
+{
+  "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": ["json", "log"]
+      }
+    ]
+  ]
+}

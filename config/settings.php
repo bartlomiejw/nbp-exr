@@ -18,7 +18,7 @@ return [
             'description' => __('Wprowadź tekst wyświetlany ponad tabelą kursów walut', \NbpExr\Main::PREFIX),
             'section'     => 'general',
             'type'        => 'text',
-            'default'     => '',
+            'default'     => 'Kursy walut',
         ],
 //        'email'                          => [
 //            'name'        => __('Email', \NbpExr\Main::PREFIX),
@@ -39,28 +39,28 @@ return [
             'description' => __('Wybierz z palety kolorów', \NbpExr\Main::PREFIX),
             'section'     => 'general',
             'type'        => 'color',
-            'default'     => '#000', // empty text means #000 by default anyway so might as well set it
+            'default'     => '#018765', // empty text means #000 by default anyway so might as well set it
         ],
         'color_table_header'                          => [
 	        'name'        => __('Kolor nagłówków tabli', \NbpExr\Main::PREFIX),
 	        'description' => __('Wybierz z palety kolorów', \NbpExr\Main::PREFIX),
 	        'section'     => 'general',
 	        'type'        => 'color',
-	        'default'     => '#000', // empty text means #000 by default anyway so might as well set it
+	        'default'     => '#7A7A7A', // empty text means #000 by default anyway so might as well set it
         ],
         'color_table_text'                          => [
 	        'name'        => __('Kolor tekstu tabeli', \NbpExr\Main::PREFIX),
 	        'description' => __('Wybierz z palety kolorów', \NbpExr\Main::PREFIX),
 	        'section'     => 'general',
 	        'type'        => 'color',
-	        'default'     => '#000', // empty text means #000 by default anyway so might as well set it
+	        'default'     => '#018765', // empty text means #000 by default anyway so might as well set it
         ],
         'color_table_striped'                          => [
 	        'name'        => __('Kolor tła parzystego wiersza tabeli', \NbpExr\Main::PREFIX),
 	        'description' => __('Wybierz z palety kolorów', \NbpExr\Main::PREFIX),
 	        'section'     => 'general',
 	        'type'        => 'color',
-	        'default'     => '#000', // empty text means #000 by default anyway so might as well set it
+	        'default'     => '#F8F8F8', // empty text means #000 by default anyway so might as well set it
         ],
 //        'textarea'                       => [
 //            'name'        => __('Textarea', \NbpExr\Main::PREFIX),
@@ -77,13 +77,13 @@ return [
 //            'default'     => 'option1',
 //            'options'     => ['option1', 'option2', 'option3'],
 //        ],
-        'additional_css'                 => [
-            'name'        => __('Dodatkowe CSS', \NbpExr\Main::PREFIX),
-            'description' => __('Dodaj dodatkowy CSS do strony', \NbpExr\Main::PREFIX),
-            'section'     => 'advanced',
-            'type'        => 'code',
-            'default'     => '',
-        ],
+//        'additional_css'                 => [
+//            'name'        => __('Dodatkowe CSS', \NbpExr\Main::PREFIX),
+//            'description' => __('Dodaj dodatkowy CSS do strony', \NbpExr\Main::PREFIX),
+//            'section'     => 'advanced',
+//            'type'        => 'code',
+//            'default'     => '',
+//        ],
         'enable_debug_messages'          => [
             'name'        => __('Włącz komunikaty debugowania', \NbpExr\Main::PREFIX),
             'description' => __('Po włączeniu wtyczka wyświetli komunikaty debugowania w konsoli JavaScript.', \NbpExr\Main::PREFIX),
@@ -109,7 +109,7 @@ return [
 
 	            return $rates_table[0]->rates;
             },
-            'default'         => ['post', 'page'],
+            'default'         => [],
         ],
         'mini_widget_rates'             => [
 	        'name'            => __('Wybierz waluty (mini widget)', \NbpExr\Main::PREFIX),
@@ -122,7 +122,7 @@ return [
 
 		        return $rates_table[0]->rates;
 	        },
-	        'default'         => ['post', 'page'],
+	        'default'         => [],
         ],
     ],
 ];

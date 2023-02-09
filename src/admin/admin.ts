@@ -2,7 +2,8 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import App from './App.vue'
 import router from './router'
-import installShared from '~src/shared'
+import installShared from '@/shared'
+import './assets/index.scss'
 
 const app = createApp(App)
 

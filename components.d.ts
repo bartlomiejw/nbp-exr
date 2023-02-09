@@ -7,6 +7,19 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

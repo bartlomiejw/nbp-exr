@@ -1,0 +1,42 @@
+{
+  "src/admin/admin.ts": {
+    "file": "js/admin.js",
+    "src": "src/admin/admin.ts",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "css/admin.css"
+    ]
+  },
+  "src/frontend/frontend.ts": {
+    "file": "js/frontend.js",
+    "src": "src/frontend/frontend.ts",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "css": [
+      "css/frontend.css"
+    ]
+  },
+  "_index.js": {
+    "file": "js/index.js",
+    "css": [
+      "css/index.css"
+    ]
+  },
+  "index.css": {
+    "file": "css/index.css",
+    "src": "index.css"
+  },
+  "src/admin/admin.css": {
+    "file": "css/admin.css",
+    "src": "src/admin/admin.css"
+  },
+  "src/frontend/frontend.css": {
+    "file": "css/frontend.css",
+    "src": "src/frontend/frontend.css"
+  }
+}

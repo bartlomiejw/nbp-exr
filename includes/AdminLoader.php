@@ -36,31 +36,23 @@ class AdminLoader
         $slug = $this->prefix;
 
         $hook = add_menu_page(
-            esc_html(__('NbpExr', $this->prefix)),
-            esc_html(__('NbpExr', $this->prefix)),
+            esc_html(__('Kursy walut', $this->prefix)),
+            esc_html(__('Kursy walut', $this->prefix)),
             $capability,
             $slug,
             [$this, 'plugin_page'],
-            'dashicons-text' // tip: https://developer.wordpress.org/resource/dashicons
+            'dashicons-money-alt' // tip: https://developer.wordpress.org/resource/dashicons
         );
 
-        if (current_user_can($capability)) {
-            add_submenu_page(
-                $slug,
-                esc_html(__('Dashboard', $this->prefix)),
-                esc_html(__('Dashboard', $this->prefix)),
-                $capability,
-                $slug,
-                [$this, 'plugin_page']
-            );
-            add_submenu_page(
-                $slug,
-                esc_html(__('Settings', $this->prefix)),
-                esc_html(__('Settings', $this->prefix)),
-                $capability,
-                "admin.php?page={$slug}#/settings"
-            );
-        }
+//        if (current_user_can($capability)) {
+//            add_submenu_page(
+//                $slug,
+//                esc_html(__('Ustawienia', $this->prefix)),
+//                esc_html(__('Ustawienia', $this->prefix)),
+//                $capability,
+//                "admin.php?page={$slug}#/settings"
+//            );
+//        }
     }
 
     /**

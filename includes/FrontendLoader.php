@@ -56,28 +56,17 @@ class FrontendLoader {
         // 1. frontend app is demo of utilizing full vue-router
         // 2. while frontview app demonstrate passing in view attribute
         //    to select dynamic view
-        if ( $postfix === 'frontend' ) {
-            // output data for use on client-side
-            // https://wordpress.stackexchange.com/questions/344537/authenticating-with-rest-api
-            $appVars = apply_filters( 'nbpexr/frontend_app_vars', [
-                'pluginUrl' => rtrim( \NbpExr\Main::$BASEURL, '/' ),
-            ] );
-            wp_localize_script( $this->prefix . '-' . $postfix, 'vue_wp_plugin_config_' . $postfix, $appVars );
+	    $settingController = new Api\SettingController();
+	    // output data for use on client-side
+	    // https://wordpress.stackexchange.com/questions/344537/authenticating-with-rest-api
+	    $appVars = apply_filters( 'nbpexr/frontend_app_vars', [
+		    'viewComponent' => esc_attr( $a['view'] ),
+		    'pluginUrl'     => rtrim( \NbpExr\Main::$BASEURL, '/' ),
+		    'settings'      => $settingController->get_settings_raw(),
+	    ] );
+	    wp_localize_script( $this->prefix . '-' . $postfix, 'vue_wp_plugin_config_frontend', $appVars );
 
-            $content .= '<div id="vue-frontend-app" ></div>';
-        } elseif ( $postfix === 'frontview' ) {
-            $settingController = new Api\SettingController();
-            // output data for use on client-side
-            // https://wordpress.stackexchange.com/questions/344537/authenticating-with-rest-api
-            $appVars = apply_filters( 'nbpexr/frontview_app_vars', [
-                'viewComponent' => esc_attr( $a['view'] ),
-                'pluginUrl'     => rtrim( \NbpExr\Main::$BASEURL, '/' ),
-                'settings'      => $settingController->get_settings_raw(),
-            ] );
-            wp_localize_script( $this->prefix . '-' . $postfix, 'vue_wp_plugin_config_' . $postfix, $appVars );
-
-            $content .= '<div id="vue-frontview-app" ></div>';
-        }
+	    $content .= '<div id="vue-frontend-app" ></div>';
 
         return $content;
     }
