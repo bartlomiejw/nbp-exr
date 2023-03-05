@@ -1,10 +1,6 @@
 <script lang="ts">
 import {defineComponent, reactive, computed, ref, nextTick, toRaw} from 'vue';
 import {VAceEditor} from 'vue3-ace-editor';
-import ace from 'ace-builds';
-// import {ElButton} from 'element-plus';
-// import 'element-plus/es/components/button/style/css';
-// import {ElMessage} from 'element-plus';
 
 interface Rates {
   currency: string
@@ -27,6 +23,7 @@ export default defineComponent({
   },
   name: 'Settings',
   setup() {
+    console.log('asdasda')
     const oldSettings = {};
     const settings = reactive({...oldSettings});
     const ui = reactive({actionKey: 0, loaded: false});
@@ -56,7 +53,6 @@ export default defineComponent({
       try {
         let data = toRaw(this.settings);
         const rst = await this.axios.post(this.endpoints.settings, data);
-        console.log(rst);
         // const rst = { success: true }
         if (rst.status === 200) {
           ElMessage({
@@ -163,7 +159,7 @@ export default defineComponent({
         >
           <template v-for="(value, name) in structure.sections" :key="`el-menu-item-${name}`">
             <el-menu-item :index="name">
-              <a :href="`#/settings#${name}`">
+              <a :href="`/settings${name}`">
                 <span class="font-bold">{{ value }}</span>
               </a>
             </el-menu-item>
@@ -194,8 +190,6 @@ export default defineComponent({
         <div class="pt-2">
           <p><strong>Widget - strona</strong></p>
           <code class="m-auto block w-100">[nbpexr-vue-app view='ExchangeRates']</code>
-          <p><strong>Widget - mini</strong></p>
-          <code class="m-auto block w-100">[nbpexr-vue-app view='ExchangeRatesMini']</code>
         </div>
       </div>
     </aside>

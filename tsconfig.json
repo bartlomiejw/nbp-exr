@@ -5,7 +5,7 @@
     "isolatedModules": true,
     "lib": ["esnext", "dom"],
     "target": "esnext",
-    "module": "commonjs",
+    "module": "es2020",
     //	Enable all strict type inspection options.
     //Open up --strict Equivalent to enable --noImplicitAny, --noImplicitThis, --alwaysStrict， --strictNullChecks and --strictFunctionTypes and--strictPropertyInitialization。
     "strict": true,

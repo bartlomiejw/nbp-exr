@@ -1,14 +1,17 @@
 <template>
   <div class="main-wrapper">
-    <router-view :key="$route.path"></router-view>
+<!--    <router-view :key="$route.path"></router-view>-->
+    <Settings />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 import menuFix from './admin-menu-fix.js'
+import Settings from '@/admin/views/Settings.vue'
 
 export default defineComponent({
+  components: {Settings},
   mounted() {
     // const that = this
 
@@ -18,7 +21,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped>
-
-</style>

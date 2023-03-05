@@ -55,20 +55,25 @@ function getDifference(array1: any, array2: any) {
   });
 }
 
+const imageSrc = (name) => {
+  return new URL(`../assets/images/${name}.png`, import.meta.url).href;
+}
+
 // <--- REQUEST ---> //
 const getExchangeRates = async () => {
   const beforeSevenDays = moment().subtract(7, 'days').format('YYYY-MM-DD');
   const today = moment().startOf('day');
   for (let m = moment(today); m.diff(beforeSevenDays, 'days') >= 0; m.subtract(1, 'days')) {
     try {
-      let response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/A/${m.format('YYYY-MM-DD')}?format=json`)
+      let response = await
+          axios.get(`https://api.nbp.pl/api/exchangerates/tables/C/${m.format('YYYY-MM-DD')}?format=json`)
       const ratesDifference = getDifference(response.data[0].rates, selectedRates).map((rate: any) => rate.code)
       tableData.value = getDifference(response.data[0].rates, ratesDifference)
       dateInput.value = m.format('YYYY-MM-DD')
 
       if (response.status === 200) break;
     } catch (err) {
-      // console.log(err)
+      console.clear()
     }
   }
 }
@@ -78,12 +83,11 @@ const updateExchangeRates = async (date: string) => {
       'YYYY-MM-DD'
   )
   try {
-    let response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/A/${fetchDate}?format=json`)
+    let response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/C/${fetchDate}?format=json`)
     const ratesDifference = getDifference(response.data[0].rates, selectedRates).map((rate: any) => rate.code)
     tableData.value = getDifference(response.data[0].rates, ratesDifference)
   } catch (err) {
-    // console.log(err)
-
+    console.clear()
     return tableData.value = ([])
   }
 }
@@ -114,30 +118,27 @@ onMounted(() => {
     </el-row>
     <el-row>
       <el-table :data="tableData" stripe table-layout="fixed" :fit="true" style="width: 100%" row-class-name="no-hover">
-        <el-table-column label="Kraj">
+        <el-table-column align="center" header-align="center">
           <template #default="scope">
-            {{ extendData.filter(item => item.code === scope.row.code).map(({ country }) => country).join() }}
+            <div class="flex justify-center items-center">
+              <img class="w-5 mr-5" :src="imageSrc(scope.row.code)" :alt="scope.row.code">
+              {{ scope.row.code }}
+            </div>
           </template>
         </el-table-column>
-        <el-table-column
-            align="center">
-          <template #default="scope">
-            {{ scope.row.currency }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Kod waluty" align="center" header-align="center">
-          <template #default="scope">
-            {{
-              (extendData.filter(item => item.code === scope.row.code).map(({ units }) => units).join() || '1') + ' ' +
-              scope.row.code
-            }}
-          </template>
-        </el-table-column>
-        <el-table-column label="Kurs średni NBP" align="center" header-align="center">
+        <el-table-column label="Kurs kupna" align="center" header-align="center">
           <template #default="scope">
             {{
               (Number(extendData.filter(item => item.code === scope.row.code).map(({ units }) => units).join())
-                  * scope.row.mid).toFixed(4)
+                  * scope.row.bid).toFixed(4)
+            }}
+          </template>
+        </el-table-column>
+        <el-table-column label="Kurs sprzedaży" align="center" header-align="center">
+          <template #default="scope">
+            {{
+              (Number(extendData.filter(item => item.code === scope.row.code).map(({ units }) => units).join())
+                  * scope.row.ask).toFixed(4)
             }}
           </template>
         </el-table-column>
@@ -152,7 +153,7 @@ onMounted(() => {
 .header {
   background-color: #F8F8F8;
   border-top: 3px solid v-bind(colorTableBorder);
-  padding: 30px 15px;
+  padding: 20px 15px;
 }
 
 h3 {
