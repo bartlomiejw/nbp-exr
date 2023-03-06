@@ -100,11 +100,11 @@ onMounted(() => {
 
 <template>
   <div class="app-home">
-    <el-row class="header" align="middle">
-      <el-col :span="12">
-        <h3>{{ tableRatesTitle }}</h3>
+    <el-row class="header text-center lg:text-left" align="middle">
+      <el-col :md="24" :lg="12">
+        <h3 class="mb-4 mt-0 xs:m-0">{{ tableRatesTitle }}</h3>
       </el-col>
-      <el-col class="text-right" :span="12">
+      <el-col class="text-center lg:text-right" :md="24" :lg="12">
         <el-date-picker
             v-model="dateInput"
             type="date"
@@ -176,22 +176,21 @@ h3 {
   letter-spacing: 0;
   text-transform: uppercase;
   vertical-align: bottom;
+
+  .cell {
+    word-break: break-word;
+  }
 }
 
 :deep(.el-table) tr td.el-table__cell {
   padding: 16px 12px;
   color: v-bind(colorTableText);
-  font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
-}
-
-:deep(.el-table) tr td:first-of-type {
-  border-right: 1px solid v-bind(colorTableBorder) !important;
 }
 
 :deep(.el-table) tr td.el-table__cell:first-of-type {
@@ -201,5 +200,9 @@ h3 {
 
 :deep(.el-table--striped) .el-table__body tr.el-table__row--striped td.el-table__cell {
   background: v-bind(colorTableStriped)
+}
+
+:deep(.el-data-picker) {
+  width: 100%;
 }
 </style>

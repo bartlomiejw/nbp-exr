@@ -20,7 +20,11 @@ class Assets {
 	 */
 	public function __construct( $prefix ) {
 		$this->prefix = $prefix;
-		add_action( is_admin() ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts', [ $this, 'register' ] );
+		if ( is_admin() ) {
+			add_action( 'admin_enqueue_scripts', [ $this, 'register' ] );
+		} else {
+			add_action( 'wp_enqueue_scripts', [ $this, 'register' ] );
+		}
 
 		// add type="module" to specific script tag
 		add_filter( 'script_loader_tag', function ( $tag, $handle ) {
@@ -60,8 +64,14 @@ class Assets {
 		foreach ( $scripts as $handle => $script ) {
 			$deps      = isset( $script['deps'] ) ? $script['deps'] : false;
 			$in_footer = isset( $script['in_footer'] ) ? $script['in_footer'] : false;
+			$is_backend = isset( $script['script_place'] ) ? $script['script_place'] : false;
 
-			wp_enqueue_script( $handle, $script['src'], $deps, null, $in_footer );
+			if ($is_backend === 'backend' && is_admin()) {
+				wp_enqueue_script( $handle, $script['src'], $deps, null, $in_footer );
+			} elseif ($is_backend !== 'backend') {
+				wp_enqueue_script( $handle, $script['src'], $deps, null, $in_footer );
+			}
+
 		}
 	}
 
@@ -92,27 +102,27 @@ class Assets {
 
 		$scripts = [
 			'vuejs'                     => [
-				'src'       => 'https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.global.prod.js',
+				'src'          => 'https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.global.prod.js',
 				'script_place' => 'both',
-				'in_footer' => true,
+				'in_footer'    => true,
 			],
 			$this->prefix . '-vendor'   => [
-				'src'       => $assets_url . '/js/index.js',
+				'src'          => $assets_url . '/js/index.js',
 				'script_place' => 'both',
-				'deps'      => [ 'vuejs' ],
-				'in_footer' => true,
+				'deps'         => [ 'vuejs' ],
+				'in_footer'    => true,
 			],
 			$this->prefix . '-frontend' => [
-				'src'       => $assets_url . '/js/frontend.js',
+				'src'          => $assets_url . '/js/frontend.js',
 				'script_place' => 'frontend',
-				'deps'      => [ 'vuejs', $this->prefix . '-vendor' ],
-				'in_footer' => true,
+				'deps'         => [ 'vuejs', $this->prefix . '-vendor' ],
+				'in_footer'    => true,
 			],
 			$this->prefix . '-admin'    => [
-				'src'       => $assets_url . '/js/admin.js',
+				'src'          => $assets_url . '/js/admin.js',
 				'script_place' => 'backend',
-				'deps'      => [ 'vuejs', $this->prefix . '-vendor' ],
-				'in_footer' => true,
+				'deps'         => [ 'vuejs', $this->prefix . '-vendor' ],
+				'in_footer'    => true,
 			],
 		];
 

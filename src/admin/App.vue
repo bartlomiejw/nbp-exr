@@ -1,6 +1,5 @@
 <template>
   <div class="main-wrapper">
-<!--    <router-view :key="$route.path"></router-view>-->
     <Settings />
   </div>
 </template>
