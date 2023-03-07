@@ -1,6 +1,5 @@
 <script lang="ts">
 import {defineComponent, reactive, computed, ref, nextTick, toRaw} from 'vue';
-import {VAceEditor} from 'vue3-ace-editor';
 
 interface Rates {
   currency: string
@@ -18,12 +17,8 @@ interface OptionsArguments {
 type Options = OptionsArguments[]
 
 export default defineComponent({
-  components: {
-    VAceEditor
-  },
   name: 'Settings',
   setup() {
-    console.log('asdasda')
     const oldSettings = {};
     const settings = reactive({...oldSettings});
     const ui = reactive({actionKey: 0, loaded: false});

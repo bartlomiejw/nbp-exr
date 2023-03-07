@@ -107,19 +107,19 @@ class Assets {
 				'in_footer'    => true,
 			],
 			$this->prefix . '-vendor'   => [
-				'src'          => $assets_url . '/js/index.js',
+				'src'          => $assets_url . '/js/index.min.js',
 				'script_place' => 'both',
 				'deps'         => [ 'vuejs' ],
 				'in_footer'    => true,
 			],
 			$this->prefix . '-frontend' => [
-				'src'          => $assets_url . '/js/frontend.js',
+				'src'          => $assets_url . '/js/frontend.min.js',
 				'script_place' => 'frontend',
 				'deps'         => [ 'vuejs', $this->prefix . '-vendor' ],
 				'in_footer'    => true,
 			],
 			$this->prefix . '-admin'    => [
-				'src'          => $assets_url . '/js/admin.js',
+				'src'          => $assets_url . '/js/admin.min.js',
 				'script_place' => 'backend',
 				'deps'         => [ 'vuejs', $this->prefix . '-vendor' ],
 				'in_footer'    => true,

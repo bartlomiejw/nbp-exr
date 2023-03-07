@@ -1,28 +1,36 @@
 {
   "src/admin/admin.ts": {
-    "file": "js/admin.js",
+    "file": "js/admin.min.js",
     "src": "src/admin/admin.ts",
     "isEntry": true,
     "imports": [
-      "_index.js"
+      "_elementPlus.min.js",
+      "_index.min.js"
     ],
     "css": [
       "css/admin.css"
     ]
   },
   "src/frontend/frontend.ts": {
-    "file": "js/frontend.js",
+    "file": "js/frontend.min.js",
     "src": "src/frontend/frontend.ts",
     "isEntry": true,
     "imports": [
-      "_index.js"
+      "_elementPlus.min.js",
+      "_index.min.js"
     ],
     "css": [
       "css/frontend.css"
     ]
   },
-  "_index.js": {
-    "file": "js/index.js",
+  "_elementPlus.min.js": {
+    "file": "js/elementPlus.min.js"
+  },
+  "_index.min.js": {
+    "file": "js/index.min.js",
+    "imports": [
+      "_elementPlus.min.js"
+    ],
     "css": [
       "css/index.css"
     ]

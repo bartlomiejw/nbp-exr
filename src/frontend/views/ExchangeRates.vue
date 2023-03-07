@@ -4,9 +4,10 @@ import axios from "axios";
 import moment from 'moment/moment'
 import {extendData} from "@/shared/extendData";
 import {getConfig} from '@/shared/pluginHelpers'
+import pl from 'element-plus/dist/locale/pl.mjs'
 
 defineComponent({
-  name: 'ExchangeRates'
+  name: 'ExchangeRates',
 })
 
 // <--- REACTIVE ---> //
@@ -102,18 +103,20 @@ onMounted(() => {
   <div class="app-home">
     <el-row class="header text-center lg:text-left" align="middle">
       <el-col :md="24" :lg="12">
-        <h3 class="mb-4 mt-0 xs:m-0">{{ tableRatesTitle }}</h3>
+        <h3 class="mb-4 mt-0 lg:m-0 lg:mb-0">{{ tableRatesTitle }}</h3>
       </el-col>
       <el-col class="text-center lg:text-right" :md="24" :lg="12">
-        <el-date-picker
-            v-model="dateInput"
-            type="date"
-            placeholder="Wybierz datę"
-            :disabled-date="disabledDate"
-            :shortcuts="shortcuts"
-            size="large"
-            @change="updateExchangeRates(dateInput)"
-        />
+        <el-config-provider :locale="pl">
+          <el-date-picker
+              v-model="dateInput"
+              type="date"
+              placeholder="Wybierz datę"
+              :disabled-date="disabledDate"
+              :shortcuts="shortcuts"
+              size="large"
+              @change="updateExchangeRates(dateInput)"
+          />
+        </el-config-provider>
       </el-col>
     </el-row>
     <el-row>
@@ -169,13 +172,21 @@ h3 {
 }
 
 :deep(.el-table) th.el-table__cell {
-  padding: 16px 12px;
+  padding: 5px 12px;
   color: #6c6c6c;
   font-weight: 300;
   font-size: 12px;
   letter-spacing: 0;
   text-transform: uppercase;
-  vertical-align: bottom;
+  vertical-align: middle;
+
+  &.is-leaf {
+    border-bottom: 1px solid hsla(0, 0%, 50.2%, .5019607843137255);
+  }
+
+  &.is-leaf:last-of-type {
+    border-right: 1px solid hsla(0, 0%, 50.2%, .5019607843137255);
+  }
 
   .cell {
     word-break: break-word;
@@ -191,6 +202,10 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
+
+  &:last-of-type {
+    border-right: 1px solid hsla(0, 0%, 50.2%, .5019607843137255);
+  }
 }
 
 :deep(.el-table) tr td.el-table__cell:first-of-type {
@@ -202,7 +217,12 @@ h3 {
   background: v-bind(colorTableStriped)
 }
 
-:deep(.el-data-picker) {
+:deep( .el-date-editor.el-input),
+:deep( .el-date-editor.el-input__wrapper) {
   width: 100%;
+}
+
+:deep(.el-input__inner) {
+  border: none;
 }
 </style>

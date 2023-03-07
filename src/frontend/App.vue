@@ -65,7 +65,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="hasLoaded" class="main-wrapper">
-    <component :is="comp" :key="key"></component>
-  </div>
+    <div v-if="hasLoaded" class="main-wrapper">
+      <component :is="comp" :key="key"></component>
+    </div>
 </template>

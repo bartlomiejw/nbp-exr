@@ -4,15 +4,18 @@
  * @description global element-plus variable definition
 */
 
-@forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (
-    'primary': (
-      'base': #062c6e
-    )
-  )
-);
-
- @use "element-plus/theme-chalk/src/index.scss" as *;
+@use "element-plus/theme-chalk/src/index.scss" as *;
+@use "element-plus/theme-chalk/src/button.scss" as *;
+@use "element-plus/theme-chalk/src/date-picker.scss" as *;
+@use "element-plus/theme-chalk/src/table-column.scss" as *;
+@use "element-plus/theme-chalk/src/table.scss" as *;
+@use "element-plus/theme-chalk/src/col.scss" as *;
+@use "element-plus/theme-chalk/src/row.scss" as *;
+@use "element-plus/theme-chalk/src/container.scss" as *;
+@use "element-plus/theme-chalk/src/input.scss" as *;
+@use "element-plus/theme-chalk/src/dropdown-item.scss" as *;
+@use "element-plus/theme-chalk/src/select.scss" as *;
+@use "element-plus/theme-chalk/src/select-v2.scss" as *;
 
 $primary: #062c6e;
 $success: #67c23a;

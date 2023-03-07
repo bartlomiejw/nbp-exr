@@ -9,10 +9,6 @@ import {resolve} from 'path'
 import ElementPlus from 'unplugin-element-plus/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 
-import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
-import path from 'path'
-
-
 // https://vitejs.dev/config/
 export default defineConfig({
     resolve: {
@@ -44,13 +40,15 @@ export default defineConfig({
         preprocessorOptions: {
             //define global scss variable
             scss: {
-                additionalData: `@use "@/admin/assets/admin.scss" as *;`,
+                additionalData: `
+        @use "@/admin/assets/admin.scss" as *;
+        @use "@/frontend/assets/frontend.scss" as *;
+        `
             },
         },
     },
     plugins: [
         vue(),
-
         AutoImport({
             imports: [
                 // presets
@@ -74,22 +72,8 @@ export default defineConfig({
             dirs: ['src/admin/layout', 'src/admin/components', 'src/frontend/layout', 'src/frontend/components', 'src/frontend/layout', 'src/frontend/components'],
             resolvers: [ElementPlusResolver()],
         }),
-        // createSvgIconsPlugin({
-        //   // config svg dir that can config multi
-        //   iconDirs: [
-        //     path.resolve(process.cwd(), 'src/icons/common'),
-        //     path.resolve(process.cwd(), 'src/icons/nav-bar'),
-        //   ],
-        //   // appoint svg icon using mode
-        //   symbolId: 'icon-[dir]-[name]',
-        // }),
         ElementPlus({
             useSource: true,
-        }),
-        prismjs({
-            languages: ['log'],
-            theme: 'twilight',
-            css: true,
         }),
         checker({
             vueTsc: true,
@@ -107,21 +91,34 @@ export default defineConfig({
         assetsDir: 'assetsDIR',
         // publicDir: 'public',
         emptyOutDir: true, // delete the contents of the output directory before each build
-
+        terserOptions: {
+            compress: {
+                // compress options
+            },
+            keep_classnames: false,
+            keep_fnames: false,
+            ie8: false,
+            module: false,
+            safari10: false,
+            toplevel: false,
+        },
         // https://rollupjs.org/guide/en/#big-list-of-options
         rollupOptions: {
             input: [
                 'src/admin/admin.ts',
                 'src/frontend/frontend.ts',
-                // 'src/style.scss',
-                // 'src/assets'
             ],
             output: {
-                chunkFileNames: 'js/[name].js',
-                entryFileNames: 'js/[name].js',
-
+                chunkFileNames: 'js/[name].min.js',
+                entryFileNames: 'js/[name].min.js',
+                manualChunks: {
+                    // lodash: ['lodash'],
+                    // moment: ['moment'],
+                    // axios: ['axios'],
+                    elementPlus: ['element-plus'],
+                },
                 assetFileNames: ({name}) => {
-                    if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')){
+                    if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
                         return 'images/[name][extname]';
                     }
 
