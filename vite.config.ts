@@ -11,6 +11,9 @@ import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    optimizeDeps: {
+        include: ["element-plus"],
+    },
     resolve: {
         alias: {
             '@': resolve(__dirname, 'src'),
@@ -49,22 +52,22 @@ export default defineConfig({
     },
     plugins: [
         vue(),
-        AutoImport({
-            imports: [
-                // presets
-                'vue',
-                'vue-router',
-                {'element-plus/es': ['ElMessage']},
-            ],
-            resolvers: [ElementPlusResolver()],
-            // Generate corresponding .eslintrc-auto-import.json file.
-            // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
-            eslintrc: {
-                enabled: true, // Default `false`
-                filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-                globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-            },
-        }),
+        // AutoImport({
+        //     imports: [
+        //         // presets
+        //         'vue',
+        //         'vue-router',
+        //         {'element-plus/es': ['ElMessage']},
+        //     ],
+        //     resolvers: [ElementPlusResolver()],
+        //     // Generate corresponding .eslintrc-auto-import.json file.
+        //     // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
+        //     eslintrc: {
+        //         enabled: true, // Default `false`
+        //         filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        //         globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
+        //     },
+        // }),
         Components({
             dts: true,
             directoryAsNamespace: true,
@@ -98,7 +101,7 @@ export default defineConfig({
             keep_classnames: false,
             keep_fnames: false,
             ie8: false,
-            module: false,
+            module: true,
             safari10: false,
             toplevel: false,
         },
