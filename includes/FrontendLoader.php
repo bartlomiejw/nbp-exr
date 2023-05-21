@@ -47,7 +47,7 @@ class FrontendLoader {
         // See Assets.php to add additional frontend js and css
         $a = shortcode_atts( [
             'postfix' => 'frontend',
-            'view'    => 'Home',
+            'view'    => 'Home'
         ], $atts );
 
         $postfix = esc_attr( $a['postfix'] );

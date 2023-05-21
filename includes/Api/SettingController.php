@@ -167,7 +167,7 @@ class SettingController extends \WP_REST_Controller {
 			$settings_details = $options['options'];
 
 			foreach ( $settings_details as $id => $details ) {
-				//var_dump($details);
+//				var_dump($details);
 				if ( isset( $details['optionsCallback'] ) ) {
 					$options['options'][ $id ]['options'] = call_user_func( $details['optionsCallback'], $details );
 				}
