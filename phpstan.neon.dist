@@ -1,0 +1,8 @@
+parameters:
+	level: 6
+	paths:
+		- nbp-exr.php
+		- uninstall.php
+		- includes
+	bootstrapFiles:
+		- tests/php/phpstan-bootstrap.php

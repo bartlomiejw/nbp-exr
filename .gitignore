@@ -1,0 +1,27 @@
+# Dependencies
+/node_modules/
+/vendor/
+
+# Build output (produced in CI and by `npm run build`)
+/public/
+/build/
+*.zip
+
+# Tool caches
+/.phpunit.cache/
+.phpcs-cache
+*.tsbuildinfo
+/coverage/
+
+# Local overrides
+phpcs.xml
+phpstan.neon
+phpunit.xml
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log

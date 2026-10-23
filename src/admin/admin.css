@@ -1,0 +1,24 @@
+/*
+ * wp-admin styles form controls globally (forms.css); undo that inside the
+ * settings app so Element Plus inputs render as designed.
+ */
+#nbpexr-admin-app input[type="text"],
+#nbpexr-admin-app input[type="search"],
+#nbpexr-admin-app input[type="number"] {
+  min-height: unset;
+  padding: 0;
+  color: inherit;
+  line-height: inherit;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#nbpexr-admin-app input[type="text"]:focus,
+#nbpexr-admin-app input[type="search"]:focus,
+#nbpexr-admin-app input[type="number"]:focus {
+  border-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
