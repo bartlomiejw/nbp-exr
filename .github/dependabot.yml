@@ -11,6 +11,13 @@ updates:
       npm-production:
         dependency-type: production
         update-types: [minor, patch]
+    ignore:
+      # vue-tsc and typescript-eslint do not support TypeScript 7 yet.
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      # Keep Node type definitions aligned with the Node 22 LTS runtime.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: composer
     directory: /
